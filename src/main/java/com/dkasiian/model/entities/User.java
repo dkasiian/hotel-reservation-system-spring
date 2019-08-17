@@ -42,4 +42,7 @@ public class User {
     @NotNull(message = "*Please provide your role")
     @Enumerated(value = EnumType.STRING)
     private Role role;
+
+//    @OneToOne(mappedBy = "users")
+//    private Request request;
 }

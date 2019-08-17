@@ -23,16 +23,16 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "auth/")
-public class AuthenticationRestController {
+public class AuthenticationController {
 
     private AuthenticationManager authenticationManager;
     private JwtTokenProvider jwtTokenProvider;
     private UserService userService;
 
     @Autowired
-    public AuthenticationRestController(AuthenticationManager authenticationManager,
-                                        JwtTokenProvider jwtTokenProvider,
-                                        UserService userService) {
+    public AuthenticationController(AuthenticationManager authenticationManager,
+                                    JwtTokenProvider jwtTokenProvider,
+                                    UserService userService) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
