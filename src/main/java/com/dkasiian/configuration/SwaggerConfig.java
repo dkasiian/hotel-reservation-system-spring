@@ -22,10 +22,11 @@ public class SwaggerConfig {
                 .apis(RequestHandlerSelectors.basePackage("com.dkasiian.controllers"))
                 .paths(PathSelectors.any())
                 .build()
-                .apiInfo(metaInfo());
-//                .tags(new Tag("request","Operations related to requests"),
-//                        new Tag("apartment","Operations related to apartments"),
-//                        new Tag("user","Operations related to users"));
+                .apiInfo(metaInfo())
+                .tags(new Tag("request","Operations related to requests"),
+                        new Tag("apartment","Operations related to apartments"),
+                        new Tag("user","Operations related to users"),
+                        new Tag("auth","Operations related to authentication"));
     }
 
     private ApiInfo metaInfo(){
