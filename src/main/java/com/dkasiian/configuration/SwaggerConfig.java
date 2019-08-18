@@ -26,6 +26,7 @@ public class SwaggerConfig {
                 .tags(new Tag("request","Operations related to requests"),
                         new Tag("apartment","Operations related to apartments"),
                         new Tag("user","Operations related to users"),
+                        new Tag("bill","Operations related to bills"),
                         new Tag("auth","Operations related to authentication"));
     }
 
