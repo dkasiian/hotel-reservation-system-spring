@@ -16,7 +16,6 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String LOGIN_ENDPOINT = "/auth/login";
-    private static final String TEMP_REGISTER_ENDPOINT = "/users";
 
     private final JwtTokenProvider jwtTokenProvider;
 
@@ -40,7 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui.html", "/webjars/**").permitAll()
-                .antMatchers(LOGIN_ENDPOINT, TEMP_REGISTER_ENDPOINT).permitAll()
+                .antMatchers(LOGIN_ENDPOINT).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .apply(new JwtConfigurer(jwtTokenProvider));
