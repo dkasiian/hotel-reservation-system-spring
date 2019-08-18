@@ -38,7 +38,7 @@ public class RequestController {
         return new ResponseEntity<>(requestService.saveRequest(request), HttpStatus.CREATED);
     }
 
-    @ApiOperation("Update requests")
+    @ApiOperation("Update request")
     @PutMapping
     public ResponseEntity<Request> updateRequest(@Valid @RequestBody Request request){
         return new ResponseEntity<>(requestService.saveRequest(request), HttpStatus.OK);
