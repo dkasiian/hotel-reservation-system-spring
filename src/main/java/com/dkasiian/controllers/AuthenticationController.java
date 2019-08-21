@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Api(value = "Hotel Reservation System", tags = "auth")
@@ -47,16 +46,14 @@ public class AuthenticationController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, requestDto.getPassword()));
             Optional<User> user = userService.getUserByLogin(username);
 
-            if (!user.isPresent())
-                throw new UsernameNotFoundException("User with username: " + username + " not found.");
+            String token = user
+                    .map(u -> jwtTokenProvider.createToken(username, u.getRole().name()))
+                    .orElseThrow(() -> new UsernameNotFoundException("User with username: " + username + " not found."));
 
-            String token = jwtTokenProvider.createToken(username, user.get().getRole().name());
-
-            Map<Object, Object> response = new HashMap<>();
-            response.put("username", username);
-            response.put("token", token);
-
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(new HashMap<String, String>(){{
+                put("username", username);
+                put("token", token);
+            }});
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username or password.");
         }
