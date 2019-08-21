@@ -1,6 +1,5 @@
 package com.dkasiian.controllers;
 
-import com.dkasiian.model.entities.Apartment;
 import com.dkasiian.model.entities.Bill;
 import com.dkasiian.model.services.BillService;
 import io.swagger.annotations.Api;
